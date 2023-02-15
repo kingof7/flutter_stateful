@@ -5,7 +5,7 @@ void main() {
 }
 
 class App extends StatefulWidget {
-  @override
+  @override // State<?> 클래스는 데이터를 갖고 있다.
   State<App> createState() => _AppState();
 }
 
@@ -33,8 +33,9 @@ class _AppState extends State<App> {
     });
   }
 
-  @override
+  @override // UI 부분
   Widget build(BuildContext context) {
+    // setState가 동작할 때마다 build() method 재 실행됨 : 데이터 리프레시
     return MaterialApp(
       home: Scaffold(
         backgroundColor: const Color(0xFFF4EDDB),
@@ -46,7 +47,7 @@ class _AppState extends State<App> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Text(
-                    'Click Count: ',
+                    'Click Count',
                     style: TextStyle(
                       fontSize: 30,
                     ),
