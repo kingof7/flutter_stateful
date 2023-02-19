@@ -24,6 +24,13 @@ class _AppState extends State<App> {
     }
     // setState가 동작할 때마다 build() method 재 실행됨 : 데이터 리프레시
     return MaterialApp(
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            color: Colors.red,
+          ),
+        ),
+      ),
       home: Scaffold(
         backgroundColor: const Color(0xFFF4EDDB),
         body: Center(
@@ -41,26 +48,32 @@ class _AppState extends State<App> {
                   ),
                 ],
               ),
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [],
-              ),
-              for (var n in numbers) Text('$n'),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    iconSize: 40,
-                    onPressed: onClicked,
-                    icon: const Icon(
-                      Icons.add_box_rounded,
-                    ),
-                  ),
+                children: const [
+                  MyLargeTitle(),
                 ],
               ),
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class MyLargeTitle extends StatelessWidget {
+  const MyLargeTitle({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      'My Large Title',
+      style: TextStyle(
+        fontSize: 30,
+        color: Theme.of(context).textTheme.titleLarge?.color,
       ),
     );
   }
